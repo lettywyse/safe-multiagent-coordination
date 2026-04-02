@@ -17,25 +17,32 @@ Safety-first protocols for decentralized multi-agent AI systems
 
 ```mermaid
 graph TD
-    A[Agent Core<br/>-  Decision<br/>-  Actions<br/>-  Memory] 
-    B[Safety Layer<br/>-  Alignment<br/>-  Kill Chains<br/>-  Observability]
-    C[Coord Monitor<br/>-  Incentives<br/>-  Collusion<br/>-  Miscoord]
+    A[Agent Core<br/>Decision Engine<br/>Action Space<br/>Local Memory] 
+    B[Safety Layer<br/>Alignment Check<br/>Kill Chains<br/>Observability]
+    C[Coord Monitor<br/>Incentive Check<br/>Collusion Detection<br/>Miscoordination]
     
     D[Simulation Controller]
-    E[Environment<br/>Partial Observable]
+    E[Environment State<br/>Partial Observable]
     
-    A ↔ B ↔ C
-    A ↓
-    B ↓
-    C ↓
-    D ↓
+    A <--> B
+    B <--> C
+    A --> D
+    B --> D
+    C --> D
+    D --> E
     E -.-> A
-    classDef agent fill:#E3F2FD
-    classDef safety fill:#FFF3E0
-    classDef coord fill:#E8F5E8
+    
+    classDef agent fill:#E3F2FD,stroke:#01579B
+    classDef safety fill:#FFF3E0,stroke:#E65100
+    classDef coord fill:#E8F5E8,stroke:#1B5E20
+    classDef sim fill:#F5F5F5,stroke:#424242
+    classDef env fill:#BDBDBD,stroke:#212121
+    
     class A agent
-    class B safety  
+    class B safety
     class C coord
+    class D sim
+    class E env
 ```
 
 **Safety Layer components:**
